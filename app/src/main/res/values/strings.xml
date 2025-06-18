@@ -1,0 +1,36 @@
+<!-- In res/values/strings.xml -->
+<resources>
+    <string name="app_name">Smart ECU</string>
+
+    <string name="ignition_status_label">Ignition Status:</string>
+    <string name="bluetooth_status_label">Bluetooth:</string>
+    <string name="log_label">Log:</string>
+    <string name="toggle_ignition_button">Toggle Ignition</string>
+    <string name="test_call_button">Test Call</string>
+
+    <string name="ignition_on_status">Ignition: ON</string>
+    <string name="ignition_off_status">Ignition: OFF</string>
+    <string name="bluetooth_not_connected_status">Bluetooth: Not Connected</string>
+    <string name="bluetooth_connecting_status">Bluetooth: Connecting...</string>
+    <string name="bluetooth_connected_status">Bluetooth: Connected to %1$s</string>
+    <string name="bluetooth_connection_failed_status">Bluetooth: Connection Failed to %1$s</string>
+    <string name="bluetooth_init_failed_status">Bluetooth: Initialization Failed</string>
+    <string name="bluetooth_disconnected_status">Bluetooth: Disconnected</string>
+    <string name="permissions_missing_status">Bluetooth: Permissions Missing</string>
+    <string name="bluetooth_connection_lost_status">Bluetooth: Connection Lost</string>
+
+
+    <string name="permissions_denied_toast">Permissions denied. Features may be limited.</string>
+    <string name="bluetooth_not_connected_action_toast">Bluetooth is not connected.</string>
+    <string name="call_rejected_toast">Call REJECTED by ECU</string>
+    <string name="call_accepted_toast">Call ACCEPTED by ECU</string>
+
+    <!-- For permissions dialog if needed, or for your logs -->
+    <string name="permissions_denied">Required permissions were denied.</string>
+    <string name="bluetooth_not_connected">Bluetooth is not connected or device not found.</string>
+    <string name="bluetooth_connected">Bluetooth connected successfully.</string>
+    <string name="ignition_on">Ignition: ON</string>
+    <string name="ignition_off">Ignition: OFF</string>
+
+
+</resources>
