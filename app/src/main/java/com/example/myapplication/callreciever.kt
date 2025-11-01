@@ -47,7 +47,7 @@ class CallReceiver : BroadcastReceiver() {
             if (ContextCompat.checkSelfPermission(context, Manifest.permission.ANSWER_PHONE_CALLS)
                 == android.content.pm.PackageManager.PERMISSION_GRANTED
             ) {
-                // Only works if app is the default dialer (Android 10+ requirement)
+               
                 if (telecomManager.defaultDialerPackage == context.packageName) {
                     telecomManager.endCall()
                     Log.d("CallReceiver", "Call rejected via TelecomManager")
