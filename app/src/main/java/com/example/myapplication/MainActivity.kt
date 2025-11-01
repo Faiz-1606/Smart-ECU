@@ -97,9 +97,9 @@ class MainActivity : ComponentActivity() {
             val intent = Intent(android.telecom.TelecomManager.ACTION_CHANGE_DEFAULT_DIALER)
             intent.putExtra(android.telecom.TelecomManager.EXTRA_CHANGE_DEFAULT_DIALER_PACKAGE_NAME, packageName)
             startActivity(intent)
-            log("🔔 Requested to become default dialer")
+            log(" Requested to become default dialer")
         } else {
-            log("✅ Already default dialer")
+            log(" Already default dialer")
         }
     }
 
