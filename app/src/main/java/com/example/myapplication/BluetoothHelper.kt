@@ -57,10 +57,10 @@ object BluetoothHelper {
                 return false
             }
 
-            Log.i(TAG, "✅ Bluetooth initialized successfully")
+            Log.i(TAG, " Bluetooth initialized successfully")
             return true
         } catch (e: Exception) {
-            Log.e(TAG, "❌ Error initializing Bluetooth: ${e.message}", e)
+            Log.e(TAG, "Error initializing Bluetooth: ${e.message}", e)
             return false
         }
     }
@@ -82,7 +82,7 @@ object BluetoothHelper {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             if (ContextCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                Log.e(TAG, "❌ BLUETOOTH_CONNECT permission not granted")
+                Log.e(TAG, " BLUETOOTH_CONNECT permission not granted")
                 return false
             }
         }
@@ -99,15 +99,15 @@ object BluetoothHelper {
         val device: BluetoothDevice = try {
             bluetoothAdapter!!.getRemoteDevice(deviceAddress)
         } catch (e: Exception) {
-            Log.e(TAG, "❌ Invalid Bluetooth address: $deviceAddress", e)
+            Log.e(TAG, " Invalid Bluetooth address: $deviceAddress", e)
             return false
         }
 
         try {
-            // Cancel discovery to improve connection reliability
+           
             if (bluetoothAdapter!!.isDiscovering) {
                 bluetoothAdapter!!.cancelDiscovery()
-                Thread.sleep(100) // Small delay after canceling discovery
+                Thread.sleep(100) 
             }
         } catch (e: Exception) {
             Log.w(TAG, "Failed to cancel discovery: ${e.message}")
@@ -123,22 +123,22 @@ object BluetoothHelper {
             tempSocket.connect()
             btSocket = tempSocket
 
-            Log.i(TAG, "✅ Bluetooth connection established with ${device.name ?: deviceAddress}")
+            Log.i(TAG, " Bluetooth connection established with ${device.name ?: deviceAddress}")
             true
         } catch (e: IOException) {
-            Log.e(TAG, "❌ Connection failed to $deviceAddress: ${e.message}")
+            Log.e(TAG, " Connection failed to $deviceAddress: ${e.message}")
 
-            // Try fallback connection method
+            
             try {
                 Log.i(TAG, "Trying fallback connection method...")
                 val fallbackSocket = device.javaClass.getMethod("createRfcommSocket", Int::class.javaPrimitiveType)
                     .invoke(device, 1) as BluetoothSocket
                 fallbackSocket.connect()
                 btSocket = fallbackSocket
-                Log.i(TAG, "✅ Fallback connection successful")
+                Log.i(TAG, " Fallback connection successful")
                 true
             } catch (fallbackEx: Exception) {
-                Log.e(TAG, "❌ Fallback connection also failed: ${fallbackEx.message}")
+                Log.e(TAG, " Fallback connection also failed: ${fallbackEx.message}")
                 cleanup()
                 false
             }
@@ -155,10 +155,10 @@ object BluetoothHelper {
         return try {
             btSocket?.outputStream?.write(command.toByteArray())
             btSocket?.outputStream?.flush()
-            Log.d(TAG, "✅ Command sent: ${command.trim()}")
+            Log.d(TAG, " Command sent: ${command.trim()}")
             true
         } catch (e: IOException) {
-            Log.e(TAG, "❌ Failed to send command '${command.trim()}': ${e.message}")
+            Log.e(TAG, " Failed to send command '${command.trim()}': ${e.message}")
             false
         }
     }
